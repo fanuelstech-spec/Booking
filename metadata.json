@@ -1,0 +1,6 @@
+{
+  "name": "Bamenda Dine & Track",
+  "description": "Restaurant table booking, food ordering, and real-time delivery tracking with MTN MoMo, Orange Money, and secure driver verification in Bamenda, Cameroon.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
