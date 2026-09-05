@@ -27,15 +27,17 @@ export const ReservationsList: React.FC<ReservationsListProps> = ({
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-8">
       
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white rounded-3xl p-6 sm:p-8 shadow-md relative overflow-hidden">
+      <div className="bg-white/5 backdrop-blur-xl text-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/10 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:20px_20px]"></div>
+
         <div className="relative z-10 max-w-2xl">
-          <span className="text-[11px] uppercase font-bold tracking-widest text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20 inline-block mb-2">
+          <span className="text-[11px] uppercase font-bold tracking-widest text-orange-400 bg-orange-400/10 px-3 py-1 rounded-full border border-orange-400/20 inline-block mb-2 backdrop-blur-md">
             Fine Dining & Cultural Feasts
           </span>
-          <h2 className="text-2xl sm:text-3xl font-black text-white font-serif tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
             Reserve Authentic Dining Tables in Bamenda
           </h2>
-          <p className="text-xs sm:text-sm text-emerald-100 mt-2 leading-relaxed">
+          <p className="text-xs sm:text-sm text-white/70 mt-2 leading-relaxed">
             Guarantee your seating at iconic spots across Abakwa — from panoramic sunset views over Bamenda valley at Up Station to traditional Toghu hearths in Small Mankon and Commercial Avenue.
           </p>
         </div>
@@ -45,11 +47,11 @@ export const ReservationsList: React.FC<ReservationsListProps> = ({
       {reservations.length > 0 && (
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+            <h3 className="font-bold text-base text-white flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-emerald-400" />
               <span>Your Confirmed Bamenda Dining Passes</span>
             </h3>
-            <span className="text-xs text-slate-500 font-mono">
+            <span className="text-xs text-white/50 font-mono">
               {reservations.length} Active Booking{reservations.length > 1 ? 's' : ''}
             </span>
           </div>
@@ -58,11 +60,11 @@ export const ReservationsList: React.FC<ReservationsListProps> = ({
             {reservations.map((res) => (
               <div
                 key={res.id}
-                className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white p-5 rounded-2xl border border-amber-500/30 shadow-md relative overflow-hidden"
+                className="bg-white/5 backdrop-blur-xl text-white p-5 rounded-2xl border border-orange-500/30 shadow-2xl relative overflow-hidden"
               >
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
                   <div>
-                    <span className="text-[10px] tracking-widest uppercase font-mono text-amber-400 font-bold">
+                    <span className="text-[10px] tracking-widest uppercase font-mono text-orange-400 font-bold">
                       TABLE PASS #{res.reservationNumber}
                     </span>
                     <h4 className="font-bold text-base text-white">
@@ -70,8 +72,8 @@ export const ReservationsList: React.FC<ReservationsListProps> = ({
                     </h4>
                   </div>
                   <div className="text-right">
-                    <span className="text-[10px] text-slate-400 block">Table</span>
-                    <span className="text-xl font-black text-amber-400 font-mono">
+                    <span className="text-[10px] text-white/50 block">Table</span>
+                    <span className="text-xl font-black text-orange-400 font-mono">
                       #{res.tableNumber}
                     </span>
                   </div>
@@ -79,30 +81,30 @@ export const ReservationsList: React.FC<ReservationsListProps> = ({
 
                 <div className="grid grid-cols-3 gap-2 text-xs mb-3">
                   <div>
-                    <span className="text-slate-400 text-[10px] block">Guest</span>
+                    <span className="text-white/50 text-[10px] block">Guest</span>
                     <span className="font-semibold text-white truncate block">{res.customerName}</span>
                   </div>
                   <div>
-                    <span className="text-slate-400 text-[10px] block">Date & Time</span>
+                    <span className="text-white/50 text-[10px] block">Date & Time</span>
                     <span className="font-semibold text-white truncate block">{res.date} @ {res.timeSlot}</span>
                   </div>
                   <div>
-                    <span className="text-slate-400 text-[10px] block">Party Size</span>
+                    <span className="text-white/50 text-[10px] block">Party Size</span>
                     <span className="font-semibold text-white">{res.partySize} Guests</span>
                   </div>
                 </div>
 
                 {res.specialRequests && (
-                  <div className="text-[11px] bg-white/5 p-2 rounded border border-white/10 text-slate-300 mb-3">
-                    <strong className="text-amber-300">Dining Note:</strong> {res.specialRequests}
+                  <div className="text-[11px] bg-white/5 p-2.5 rounded-xl border border-white/10 text-white/80 mb-3 backdrop-blur-md">
+                    <strong className="text-orange-400">Dining Note:</strong> {res.specialRequests}
                   </div>
                 )}
 
-                <div className="flex items-center justify-between pt-2 border-t border-slate-800 text-[11px]">
+                <div className="flex items-center justify-between pt-2 border-t border-white/10 text-[11px]">
                   <span className="text-emerald-400 font-semibold flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5" /> Seating Guaranteed
                   </span>
-                  <span className="text-slate-400 font-mono">
+                  <span className="text-white/50 font-mono">
                     Tel: {res.customerPhone}
                   </span>
                 </div>
@@ -115,10 +117,10 @@ export const ReservationsList: React.FC<ReservationsListProps> = ({
       {/* Available Restaurants for Instant Booking */}
       <div className="space-y-4">
         <div>
-          <h3 className="font-bold text-lg text-slate-900">
+          <h3 className="font-bold text-lg text-white">
             Select a Restaurant to Book a Table
           </h3>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-white/50 mt-0.5">
             Instant table assignment with zero upfront reservation fee.
           </p>
         </div>
@@ -127,20 +129,20 @@ export const ReservationsList: React.FC<ReservationsListProps> = ({
           {restaurants.map((rest) => (
             <div
               key={rest.id}
-              className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+              className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-white/20 hover:bg-white/[0.08] overflow-hidden shadow-xl hover:shadow-2xl transition-all flex flex-col justify-between text-white"
             >
-              <div className="relative h-44 w-full bg-slate-100">
+              <div className="relative h-44 w-full bg-neutral-900">
                 <img
                   src={rest.image}
                   alt={rest.name}
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent"></div>
                 
                 <div className="absolute bottom-3 left-3 right-3 text-white">
-                  <span className="text-[10px] text-amber-300 font-bold block flex items-center gap-1">
-                    <MapPin className="w-3 h-3 text-amber-400" /> {rest.neighborhood}
+                  <span className="text-[10px] text-orange-400 font-bold block flex items-center gap-1 mb-0.5">
+                    <MapPin className="w-3 h-3 text-orange-400" /> {rest.neighborhood}
                   </span>
                   <h4 className="font-bold text-base text-white leading-tight">
                     {rest.name}
@@ -149,18 +151,18 @@ export const ReservationsList: React.FC<ReservationsListProps> = ({
               </div>
 
               <div className="p-4 space-y-3">
-                <p className="text-xs text-slate-600 line-clamp-2">
+                <p className="text-xs text-white/70 line-clamp-2">
                   {rest.tagline}
                 </p>
 
                 {/* Available Seating Zones */}
                 <div className="space-y-1">
-                  <span className="text-[10px] uppercase font-bold text-slate-400 block">
+                  <span className="text-[10px] uppercase font-bold text-white/40 block">
                     Seating Zones
                   </span>
                   <div className="flex flex-wrap gap-1">
                     {rest.tables.map(t => (
-                      <span key={t.id} className="text-[10px] bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded font-medium">
+                      <span key={t.id} className="text-[10px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-2 py-0.5 rounded-md font-medium backdrop-blur-md">
                         Table #{t.tableNumber} ({t.zone.replace('_', ' ')})
                       </span>
                     ))}
@@ -170,9 +172,9 @@ export const ReservationsList: React.FC<ReservationsListProps> = ({
                 <button
                   type="button"
                   onClick={() => onBookAtRestaurant(rest)}
-                  className="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white font-bold text-xs rounded-xl transition-all shadow-xs flex items-center justify-center gap-1.5"
+                  className="w-full py-2.5 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-bold text-xs rounded-xl transition-all shadow-lg shadow-orange-500/25 flex items-center justify-center gap-1.5"
                 >
-                  <CalendarDays className="w-4 h-4 text-emerald-300" />
+                  <CalendarDays className="w-4 h-4 text-white" />
                   <span>Reserve Table at {rest.name.split(' ')[0]}</span>
                 </button>
               </div>

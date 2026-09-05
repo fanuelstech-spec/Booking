@@ -270,34 +270,44 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-amber-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-neutral-950 text-white selection:bg-orange-500 selection:text-white relative overflow-hidden font-sans">
       
+      {/* Frosted Glass Ambient Lighting Orbs */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-orange-600/30 blur-[130px]"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-green-800/20 blur-[150px]"></div>
+        <div className="absolute top-[40%] left-[30%] w-[40%] h-[40%] rounded-full bg-yellow-600/10 blur-[110px]"></div>
+        <div className="absolute top-[75%] left-[5%] w-[35%] h-[35%] rounded-full bg-orange-700/15 blur-[130px]"></div>
+      </div>
+
       {/* Toast Notification Banner */}
       {toastMessage && (
-        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-slate-950/95 text-white px-4 py-2.5 rounded-2xl shadow-xl border border-amber-400/40 text-xs font-semibold flex items-center gap-2 animate-in slide-in-from-top-4 duration-200">
-          <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-white/10 backdrop-blur-xl text-white px-4 py-2.5 rounded-2xl shadow-2xl border border-white/20 text-xs font-semibold flex items-center gap-2 animate-in slide-in-from-top-4 duration-200">
+          <span className="w-2 h-2 rounded-full bg-orange-400 animate-ping"></span>
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* Global Header */}
-      <Header
-        activeTab={activeTab}
-        setActiveTab={(tab) => {
-          setActiveTab(tab);
-          if (tab === 'explore') {
-            // Keep current view or return to list
-          }
-        }}
-        cartItems={cartItems}
-        onOpenCart={() => setIsCartOpen(true)}
-        onOpenAiAssistant={() => setIsAiAssistantOpen(true)}
-        hasActiveOrder={activeOrders.some(o => o.status !== 'delivered')}
-        activeOrderCount={activeOrders.length}
-      />
+      <div className="relative z-10">
+        <Header
+          activeTab={activeTab}
+          setActiveTab={(tab) => {
+            setActiveTab(tab);
+            if (tab === 'explore') {
+              // Keep current view or return to list
+            }
+          }}
+          cartItems={cartItems}
+          onOpenCart={() => setIsCartOpen(true)}
+          onOpenAiAssistant={() => setIsAiAssistantOpen(true)}
+          hasActiveOrder={activeOrders.some(o => o.status !== 'delivered')}
+          activeOrderCount={activeOrders.length}
+        />
+      </div>
 
       {/* Main Content Area */}
-      <main className="flex-1 pb-16">
+      <main className="flex-1 pb-16 relative z-10">
         {/* TAB 1: RESTAURANTS & MENU */}
         {activeTab === 'explore' && (
           <>
@@ -350,28 +360,28 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-8 px-4 text-center text-xs text-slate-500">
+      <footer className="relative z-10 bg-white/5 backdrop-blur-xl border-t border-white/10 py-8 px-4 text-center text-xs text-white/60">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-left">
-            <span className="font-bold text-slate-800 text-sm font-serif">
-              Bamenda<span className="text-amber-600">Dine</span> & Track
+            <span className="font-bold text-white text-sm tracking-tight">
+              Bamenda<span className="text-orange-500">Dine</span> & Track
             </span>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-white/50 mt-0.5">
               Serving Commercial Avenue, Up Station, Mile 2-4 Nkwen, Small Mankon & Bambili.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-slate-600">
-            <span>MTN Mobile Money (*126#)</span>
-            <span>•</span>
-            <span>Orange Money (#150#)</span>
-            <span>•</span>
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-white/70">
+            <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-yellow-400"></span> MTN MoMo (*126#)</span>
+            <span className="text-white/20">•</span>
+            <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-orange-500"></span> Orange Money (#150#)</span>
+            <span className="text-white/20">•</span>
             <span>Anti-Theft OTP Handover</span>
-            <span>•</span>
+            <span className="text-white/20">•</span>
             <span>Real-time GPS Fleet</span>
           </div>
 
-          <p className="text-[11px] text-slate-400">
+          <p className="text-[11px] text-white/40">
             © {new Date().getFullYear()} Bamenda Dine. Made for Abakwa, North-West Region, Cameroon.
           </p>
         </div>
